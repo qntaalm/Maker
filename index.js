@@ -3,13 +3,13 @@ const Discord = require('discord.js');
 const client = new Client({ intents: 32767 });
 const DiscordModals = require(`discord-modals`)
 DiscordModals(client);
-const { token, prefix, CLIENTID, mainGuild, owner } = require('./config.json');
+const { prefix, CLIENTID, mainGuild, owner } = require('./config.json');
 const { Database } = require("st.db")
 const db = new Database("database.json")
 const ms = require(`ms`)
 const chalk = require('chalk');
 require('dotenv').config();
-client.login(token).catch(err => console.log('❌ Token are not working'));
+client.login(process.env.token).catch(err => console.log('❌ Token are not working'));
 const { readdirSync } = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
@@ -71,7 +71,7 @@ for (let folder of readdirSync('./PrivateSlashCommand/').filter(folder => !folde
 console.log(Guildtable.toString());
 
 
-const process = require('process');
+//const process = require('process');
 
 client.on('ready', async () => {
   console.log(chalk.magentaBright('The bot is ready'));
